@@ -1,0 +1,43 @@
+# ===== 敏感配置（含 API key，禁止上传）=====
+.env
+# *.env
+
+# # ===== Python =====
+# __pycache__/
+# *.py[cod]
+# *$py.class
+# .venv/
+# venv/
+# env/
+# ENV/
+# .python-version
+
+# # ===== 依赖与构建 =====
+# .pip/
+# .pytest_cache/
+# .mypy_cache/
+# .ruff_cache/
+# .coverage
+# htmlcov/
+# build/
+# dist/
+# *.egg-info/
+
+# # ===== 日志 =====
+# logs/
+# *.log
+
+# # ===== 数据文件（知识库原始数据与向量库，视情况保留）=====
+# # 说明：data/ 下若放的是你自己的私有知识库，建议整体忽略；
+# # 如需把样例数据入库，可改成只忽略如下运行时产物
+# data/*.txt
+# milvus_local.db/
+# *.db
+# *.local
+
+# # ===== IDE / 系统 =====
+# .idea/
+# .vscode/
+# *.swp
+# .DS_Store
+# Thumbs.db
