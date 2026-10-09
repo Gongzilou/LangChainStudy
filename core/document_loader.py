@@ -20,6 +20,7 @@ import os
 from langchain_community.document_loaders import TextLoader
 
 from config.settings import Setting
+from utils.logger import logger
 
 
 class DocumentLoader:
@@ -30,8 +31,9 @@ class DocumentLoader:
         self.file_path = file_path
 
     def load(self)->list:
-        # 先判断文件/路径是否存在
+        # 先判断文件是否存在
         if not os.path.exists(self.file_path):
+            logger.error(f"知识库文件{self.file_path}不存在")
             raise FileNotFoundError(
                 f"知识库文件【{self.file_path}】不存在\n"
                 "请确认文件是否放入data/目录下，"
@@ -48,6 +50,8 @@ class DocumentLoader:
             if "source" not in doc.metadata:
                 doc.metadata["source"] = self.file_path
 
+        logger.info(f"知识库文档{self.file_path}已加载完成")
+
         return document_list
 
 
@@ -58,4 +62,4 @@ class DocumentLoader:
 if __name__ == "__main__":
     loader = DocumentLoader()
     docs = loader.load()
-    print(docs)
+    print(f"docs:\n{docs}")
