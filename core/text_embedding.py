@@ -1,5 +1,7 @@
 """  
 文档嵌入模块
+
+使用硅基流动平台的BAAI/bge-m3嵌入模型
 """
 
 # 添加项目根目录，单跑文件测试时使用
@@ -37,6 +39,7 @@ class Embedding:
             logger.info("嵌入模型初始化成功")
         except Exception as e:
             logger.error(f"嵌入模型初始化失败：\n{e}")
+            raise
 
     def embed_documents(self,text_list):
         # 将文本列表转为向量列表

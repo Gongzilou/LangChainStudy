@@ -1,7 +1,8 @@
 """  
 文档切分模块
 
-使用递归切分器
+使用递归切分器: RecursiveCharacterTextSplitter
+目前支持切分方式: split.document()
 """
 
 # 加入项目根目录，单跑文件测试使用
@@ -54,12 +55,13 @@ class TextSplitter:
             logger.info("递归切分器初始化成功")
         except Exception as e:
             logger.error(f"递归切分器初始化失败：\n{e}")
+            raise
 
     # 切分文档
     def splite_documents(self,docs):
         # 先判断要切分的文档是否存在
         if not docs:
-            logger.info(f"没发现需要切分的文档")
+            logger.warning(f"没发现需要切分的文档")
             return []
         # 切分
         chunks = self.splitter.split_documents(docs)
