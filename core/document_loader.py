@@ -1,7 +1,7 @@
 """  
 文档加载模块
 
-支持加载格式：
+目前支持加载格式：
     1.txt文档
 """
 
@@ -26,10 +26,15 @@ from utils.logger import logger
 class DocumentLoader:
     """  
     将知识库文件加载为document列表
+
+    目前支持加载方式：
+        TextLoader()
     """
+    # 获取文件路径
     def __init__(self,file_path:str=Setting.KNOWLEDGE_FILE_PATH):
         self.file_path = file_path
 
+    # 加载文件
     def load(self)->list:
         # 先判断文件是否存在
         if not os.path.exists(self.file_path):

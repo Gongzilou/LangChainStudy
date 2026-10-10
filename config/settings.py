@@ -26,10 +26,33 @@ load_dotenv()
 class Setting:
     # 知识库文件的存储路径
     KNOWLEDGE_FILE_PATH = os.getenv("KNOWLEDGE_FILE_PATH")
+
     # log日志的存储路径
     LOG_FILE_PATH = os.getenv("LOG_FILE_PATH")
     # log等级
     LOG_LEVEL = os.getenv("LOG_LEVEL")
+
+    # 文档切块大小
+    CHUNK_SIZE = int(os.getenv("CHUNK_SIZE"))
+    # 每块重叠大小
+    CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP"))
+
+    # 硅基流动平台
+    # 嵌入模型名称(使用模型为：BAAI/bge-m3)
+    EMBED_MODEL = os.getenv("EMBED_MODEL")
+    # 嵌入模型密钥
+    EMBED_API_KEY = os.getenv("EMBED_API_KEY")
+    # 嵌入模型地址
+    EMBED_BASE_URL = os.getenv("EMBED_BASE_URL")
+    # 嵌入模型维度（向量数据库创建集合时需要）
+    EMBED_DIMENSION = os.getenv("EMBED_DIMENSION")
+
+    # Milvus服务端地址
+    MILVUS_URL=os.getenv("MILVUS_URL")
+    # Milvus数据库名称
+    MILVUS_DB_NAME=os.getenv("MILVUS_DB_NAME")
+    # Milvus集合名称
+    MILVUS_COLLECTION=os.getenv("MILVUS_COLLECTION")
 
 
 
