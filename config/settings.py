@@ -30,6 +30,10 @@ class Setting:
     LOG_FILE_PATH = os.getenv("LOG_FILE_PATH")
     # log等级
     LOG_LEVEL = os.getenv("LOG_LEVEL")
+    # 文档切块大小
+    CHUNK_SIZE=os.getenv("CHUNK_SIZE")
+    # 每块重叠大小
+    CHUNK_OVERLAP=os.getenv("CHUNK_OVERLAP")
 
 
 
