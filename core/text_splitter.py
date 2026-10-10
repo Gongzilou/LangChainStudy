@@ -37,22 +37,26 @@ class TextSplitter:
     """
     # 初始化递归切分器
     def __init__(self):
-        self.splitter = RecursiveCharacterTextSplitter(
-            chunk_size=Setting.CHUNK_SIZE,
-            chunk_overlap=Setting.CHUNK_OVERLAP,
-            separators=[
-                "==============================",
-                "\n\n",
-                "\n",
-                "。", "！", "？", "；",
-                "，",
-                " ",
-                ""
-            ],
-        )
+        try:
+            self.splitter = RecursiveCharacterTextSplitter(
+                chunk_size=Setting.CHUNK_SIZE,
+                chunk_overlap=Setting.CHUNK_OVERLAP,
+                separators=[
+                    "==============================",
+                    "\n\n",
+                    "\n",
+                    "。", "！", "？", "；",
+                    "，",
+                    " ",
+                    ""
+                ],
+            )
+            logger.info("递归切分器初始化成功")
+        except Exception as e:
+            logger.error(f"递归切分器初始化失败：\n{e}")
 
     # 切分文档
-    def splite_document(self,docs):
+    def splite_documents(self,docs):
         # 先判断要切分的文档是否存在
         if not docs:
             logger.info(f"没发现需要切分的文档")
@@ -70,4 +74,18 @@ class TextSplitter:
         text_list = [
             doc.page_content for doc in chunks
         ]
+        logger.info("切好的文档已转换为字符串列表，后续可以直接做嵌入处理")
         return text_list
+
+
+
+
+
+if __name__ == "__main__":
+    from core.document_loader import DocumentLoader
+    loader = DocumentLoader()
+    docs = loader.load()
+    splitter = TextSplitter()
+    chunks = splitter.splite_documents(docs)
+    text_list = splitter.change_to_text_list(chunks)
+    print(f"text_list:\n{text_list}")
