@@ -31,9 +31,16 @@ class Setting:
     # log等级
     LOG_LEVEL = os.getenv("LOG_LEVEL")
     # 文档切块大小
-    CHUNK_SIZE=int(os.getenv("CHUNK_SIZE"))
+    CHUNK_SIZE = int(os.getenv("CHUNK_SIZE"))
     # 每块重叠大小
-    CHUNK_OVERLAP=int(os.getenv("CHUNK_OVERLAP"))
+    CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP"))
+    # 硅基流动平台
+    # 嵌入模型名称(使用模型为：BAAI/bge-m3)
+    EMBED_MODEL = os.getenv("EMBED_MODEL")
+    # 嵌入模型密钥
+    EMBED_API_KEY = os.getenv("EMBED_API_KEY")
+    # 嵌入模型地址
+    EMBED_BASE_URL = os.getenv("EMBED_BASE_URL")
 
 
 
