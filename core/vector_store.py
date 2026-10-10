@@ -7,6 +7,7 @@
 # 加入根目录，单测文件使用
 import sys
 from pathlib import Path
+
 sys.path.append(
     str(
         Path(__file__).parent.parent
@@ -18,8 +19,10 @@ sys.path.append(
 
 
 from pymilvus import MilvusClient
+
 from config.settings import Setting
 from utils.logger import logger
+
 
 class MilvusStore:
     """ 
